@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Client Particulier</title>
+	<link rel="stylesheet" href="{$url_base}public/css/styles.css">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="wrapper_inner">
+			<div class="vertical_wrap">
+			<div class="backdrop"></div>
+			<div class="vertical_bar">
+				<div class="profile_info">
+					<div class="img_holder">
+						<img src="{$url_base}public/image/lol.png" alt="profile_pic">
+					</div>
+					<p class="title">Responsable Compte</p>
+					<p class="sub_title">papisndoye218@gmail.com</p>
+				</div>
+				<ul class="menu">
+					<li><a href="{$url_base}Welcome">
+						<span class="icon"><i class="fas fa-home"></i></span>
+						<span class="text">Accueil</span>
+					</a></li>
+					<li><a href="{$url_base}ClientSalarie">
+						<span class="icon"><i class="fas fa-user" ></i></span>
+						<span class="text">Salarié</span>
+					</a></li>
+					<li><a href="{$url_base}ClientParticulier">
+						<span class="icon"><i class="fas fa-user"></i></span>
+						<span class="text">Particulier</span>
+					</a></li>
+					<li><a href="{$url_base}ClientMoral">
+						<span class="icon"><i class="fas fa-chart-pie"></i></span>
+						<span class="text">Moral</span>
+					</a></li>
+					<li><a href="#" class="active">
+						<span class="icon"><i class="fas fa-cog"></i></span>
+						<span class="text">Gestion Clients</span>
+					</a></li>
+				</ul>
+
+				<h3 class="out"><a href="" >Deconnexion</a></h3>
+			</div>
+		</div>
+		<div class="main_container">
+			<div class="top_bar">
+				<div class="hamburger">
+					<i class="fas fa-bars"></i>
+				</div>
+				<div class="logo">
+					GESTION <span>CLIENTS</span>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="content">
+					<div class="item">
+						{if isset($tests)}
+							{if $tests != null}
+								<table class="table table-bordered table-stripped">
+									<tr>
+										<th>Identifiant</th>
+										<th>Valeur 1</th>
+										<th>Valeur 2</th>
+										<th>Action</th>
+										<th>Action</th>
+									</tr>
+									{foreach from=$tests item=test}
+										<tr>
+											<td>{$test->getId()}</td>
+											<td>{$test->getValeur1()}</td>
+											<td>{$test->getValeur2()}</td>
+											<td><a href="{$url_base}Gestion/delete/{$test->getId()}">Supprimer</a></td>
+											<td><a href="{$url_base}Gestion/edit/{$test->getId()}">Editer</a></td>
+										</tr>
+									{/foreach}
+								</table>
+							{else}
+							Liste vide
+							{/if}
+						{/if}
+		                
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+
+<script src="">
+	
+</script>
+</body>
+</html>

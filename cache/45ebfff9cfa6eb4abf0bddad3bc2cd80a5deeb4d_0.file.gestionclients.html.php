@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-08-15 13:10:17
+/* Smarty version 3.1.30, created on 2020-08-15 17:35:28
   from "C:\wamp64\www\PHPBDP\frameworks\samanemvc\src\view\gestion\gestionclients.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5f37deb9beb970_17348320',
+  'unifunc' => 'content_5f381ce0a1b798_08518489',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '45ebfff9cfa6eb4abf0bddad3bc2cd80a5deeb4d' => 
     array (
       0 => 'C:\\wamp64\\www\\PHPBDP\\frameworks\\samanemvc\\src\\view\\gestion\\gestionclients.html',
-      1 => 1597496423,
+      1 => 1597512744,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,32 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f37deb9beb970_17348320 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f381ce0a1b798_08518489 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
+<style>
+	table{
+		width: 700px;
+	}
+	th{
+		text-align: left;
+	}
+	table, th, td{
+		border: 1px solid #000;
+		border-collapse: collapse;
+	}
+	th, td{
+		padding: 6px;
+	}
+	.searchcommpte{
+		margin-bottom: 25px;
+		
+	}
+</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Client Particulier</title>
+	<title>Gestion Clients Bancaire</title>
 	<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
 public/css/styles.css">
 	<?php echo '<script'; ?>
@@ -91,47 +110,53 @@ ClientMoral">
 			<div class="container">
 				<div class="content">
 					<div class="item">
-						<?php if (isset($_smarty_tpl->tpl_vars['tests']->value)) {?>
-							<?php if ($_smarty_tpl->tpl_vars['tests']->value != null) {?>
-								<table class="table table-bordered table-stripped">
+						<div class="searchcommpte" style="text-align: center;">
+		                    <input type="search" name="recherche_client" class="btn_search"placeholder="N° Compte"/>
+		                    <input type="button" name="bouton_de_recherche" class="btn_search" value="Rechercher"/>
+		                </div>
+						
+								<table>
 									<tr>
-										<th>Identifiant</th>
-										<th>Valeur 1</th>
-										<th>Valeur 2</th>
-										<th>Action</th>
-										<th>Action</th>
+										<th>ID client</th>
+										<th>Type client</th>
+										<th>Nom</th>
+										<th>Prenom</th>
+										<th>N° Compte</th>
+										<th>Etat Compte</th>
 									</tr>
-									<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tests']->value, 'test');
+										<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['listeClients']->value, 'client');
 if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['test']->value) {
+foreach ($_from as $_smarty_tpl->tpl_vars['client']->value) {
 ?>
 										<tr>
-											<td><?php echo $_smarty_tpl->tpl_vars['test']->value->getId();?>
+											<td><?php echo $_smarty_tpl->tpl_vars['client']->value->getId();?>
 </td>
-											<td><?php echo $_smarty_tpl->tpl_vars['test']->value->getValeur1();?>
+											<td>Salarié</td>
+											<td><?php echo $_smarty_tpl->tpl_vars['client']->value->getNom();?>
 </td>
-											<td><?php echo $_smarty_tpl->tpl_vars['test']->value->getValeur2();?>
-</td>
+											<td>Papis</td>
+											<td>123415241235</td>
+											<td>
+												<select>
+													<option>Actif</option>
+													<option>Bloqué</option>
+												</select>
+											</td>
+											
 											<td><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Gestion/delete/<?php echo $_smarty_tpl->tpl_vars['test']->value->getId();?>
-">Supprimer</a></td>
+GestionClients/delete">Supprimer</a></td>
+											
 											<td><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Gestion/edit/<?php echo $_smarty_tpl->tpl_vars['test']->value->getId();?>
-">Editer</a></td>
+GestionClients/update">Mise à jour</a></td>
 										</tr>
-									<?php
+										<?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
 								</table>
-							<?php } else { ?>
-							Liste vide
-							<?php }?>
-						<?php }?>
-		                
 					</div>
 				</div>
 			</div>

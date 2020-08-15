@@ -20,7 +20,7 @@ class TestRepository extends Model{
 		parent::__construct();
 	}
 
-	public function getGestion($id)
+	public function getTest($id)
 	{
 		if($this->db != null)
 		{
